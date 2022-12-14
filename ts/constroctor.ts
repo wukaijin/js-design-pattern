@@ -5,8 +5,8 @@
 
 // ES6 之前，构造器继承是典型用法
 interface Student {
-  name: string,
-  age: number,
+  name: string
+  age: number
   grade: number
 }
 // const student_1: Student = {
@@ -21,7 +21,11 @@ interface Student {
 //   grade: 6
 // }
 
-export function createStudent (name: string, age: number, grade: number): Student {
+export function createStudent(
+  name: string,
+  age: number,
+  grade: number
+): Student {
   return {
     name,
     age,
@@ -41,8 +45,8 @@ export class StudentClass implements Student {
   }
 }
 
-const student_1: Student = createStudent("Lily", 13, 6)
+const student_1: Student = createStudent('Lily', 13, 6)
 
-const student_2: Student = new StudentClass('David', 16,10)
+const student_2: Student = new StudentClass('David', 16, 10)
 
 console.log(student_1, student_2)

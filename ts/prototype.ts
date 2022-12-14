@@ -5,14 +5,19 @@
  */
 
 interface Student {
-  name: string,
-  age: number,
+  name: string
+  age: number
   grade: number
   study: () => void
 }
 
 // ES6 之前，原型继承是典型用法，作用是在 __proto__ 共享属性和方法
-function studentCreator (this: Student, name: string, age: number, grade: number): Student {
+function studentCreator(
+  this: Student,
+  name: string,
+  age: number,
+  grade: number
+): Student {
   this.name = name
   this.age = age
   this.grade = grade
@@ -33,13 +38,13 @@ class StudentClass implements Student {
     this.grade = grade
   }
   study() {
-    console.log(`${this.name} is learning~~2`);
+    console.log(`${this.name} is learning~~2`)
   }
 }
 
-const student_1: Student = new (studentCreator as any)("Lily", 13, 6)
+const student_1: Student = new (studentCreator as any)('Lily', 13, 6)
 
-const student_2: Student = new StudentClass('David', 16,10)
+const student_2: Student = new StudentClass('David', 16, 10)
 
 console.log(student_1, student_2)
 student_1.study()

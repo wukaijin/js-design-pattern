@@ -32,6 +32,6 @@ class StudentClass {
     }
 }
 exports.StudentClass = StudentClass;
-const student_1 = createStudent("Lily", 13, 6);
+const student_1 = createStudent('Lily', 13, 6);
 const student_2 = new StudentClass('David', 16, 10);
 console.log(student_1, student_2);

@@ -25,7 +25,7 @@ class StudentClass {
         console.log(`${this.name} is learning~~2`);
     }
 }
-const student_1 = new studentCreator("Lily", 13, 6);
+const student_1 = new studentCreator('Lily', 13, 6);
 const student_2 = new StudentClass('David', 16, 10);
 console.log(student_1, student_2);
 student_1.study();

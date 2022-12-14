@@ -12,17 +12,23 @@ class User {
     }
     static factory(role) {
         switch (role) {
-            case "superAdmin":
-                return new User(role, ["register", "login", "setting", "home", "system"]);
-            case "admin":
-                return new User(role, ["register", "login", "setting", "home"]);
-            case "user":
-                return new User(role, ["register", "login", "home"]);
-            case "vistor":
-                return new User(role, ["register", "login"]);
+            case 'superAdmin':
+                return new User(role, [
+                    'register',
+                    'login',
+                    'setting',
+                    'home',
+                    'system'
+                ]);
+            case 'admin':
+                return new User(role, ['register', 'login', 'setting', 'home']);
+            case 'user':
+                return new User(role, ['register', 'login', 'home']);
+            case 'vistor':
+                return new User(role, ['register', 'login']);
             default:
                 return new User(role);
         }
     }
 }
-console.log(User.factory("superAdmin"), User.factory("admin"), User.factory("user"), User.factory("vistor"));
+console.log(User.factory('superAdmin'), User.factory('admin'), User.factory('user'), User.factory('vistor'));
