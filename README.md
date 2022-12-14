@@ -1,7 +1,10 @@
 # JavaScript 设计模式
-个人项目，仅是重学设计模式过程中做些记录。
+个人项目，仅是重学设计模式过程中做些记录。  
+因个人兴趣，尝试以`TypeScript`语法基于`Node`运行。
 
-##  Creational Patterns
+`/js` 下是编译后代码，实际代码在 `/ts`
+
+##  1. Creational Patterns
 
 ### Abstract Factory
     Provides one level of interface higher than the factory pattern. It is used to return one of several factories.
@@ -15,7 +18,7 @@
 ### Singleton
     One instance of a class or one value accessible globally in an application.
 
-##  Structural Patterns
+##  2. Structural Patterns
 
 ### Adapter
     Convert the existing interfaces to a new interface to achieve compatibility and reusability of the unrelated classes
@@ -27,13 +30,13 @@
 ### Decorator
     add additional features or behaviors to a particular instance of a class, while not modifying the other instances of same class
 ### Facade
- Provide a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level interface that makes the subsystem easier to use. Wrap a complicated subsystem with a simpler interface.
+    Provide a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level interface that makes the subsystem easier to use. Wrap a complicated subsystem with a simpler interface.
 ### Flyweight
     Make instances of classes on the fly to improve performance efficiently, like individual characters or icons on the screen.
 ### Proxy
     Use a simple object to represent a complex one or provide a placeholder for another object to control access to it.
 
-##  Behavioral Patterns
+##  3. Behavioral Patterns
 
 ### Chain of Responsibility
     Let more than one object handle a request without their knowing each other. Pass the request to chained objects until
@@ -46,8 +49,7 @@
 ### Iterator
     Define an object that encapsulates details and other objects interact with such object. The relationships are loosely decoupled.
 ### Mediator
-    Decouple the direct communication between objects by introducing a middle object, the mediator, that facilitates the communication
- between the objects.
+    Decouple the direct communication between objects by introducing a middle object, the mediator, that facilitates the communication between the objects.
 ### Memento
     To record an object internal state without violating encapsulation and reclaim it later without knowledge of the original object.
 ### Observer

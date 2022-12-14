@@ -1,0 +1,23 @@
+{
+  "name": "js-design-pattern",
+  "version": "1.0.0",
+  "description": "个人项目，仅是重学设计模式过程中做些记录。   因个人兴趣，尝试以`TypeScript`语法基于`Node`运行。",
+  "main": "index.ts",
+  "scripts": {
+    "start": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wukaijin/js-design-pattern.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wukaijin/js-design-pattern/issues"
+  },
+  "homepage": "https://github.com/wukaijin/js-design-pattern#readme",
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  }
+}
