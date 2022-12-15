@@ -4,6 +4,7 @@
  * 对已有功能进行扩展，不改动原有的代码，对其他业务造成的影响。
  * ES5 示例是覆写了方法，有其局限性
  * TypeScript 中有装饰器， 但是必须额外添加配置
+ * * 比较经典的应用场景，是页面点击事件跳转页面前的统计 PV（page view）
  */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -25,9 +26,8 @@ const gitignore = path_1.default.resolve(__dirname, '../../', '.gitignore');
 Function.prototype.before = function (beforeFn) {
     const originalFn = this;
     return function () {
-        const _that = this;
-        beforeFn.apply(_that, arguments);
-        return originalFn.apply(_that, arguments);
+        beforeFn.apply(this, arguments);
+        return originalFn.apply(this, arguments);
     };
 };
 let appendFile = (filePath, data) => {
@@ -41,7 +41,8 @@ appendFile = appendFile.before(logChange);
 appendFile(gitignore, '\r\nsomethings');
 // echo separator
 console.log(Array.from(new Array(30)).join('='));
-// TypeScript 中的装饰器， 展示部分功能
+// TypeScript 中的装饰器， 展示部分功能。
+// 简单使用， 直接装饰 class， log会提前执行 (声明D ump 的时候)
 function log(str) {
     return function (target) {
         console.log(str + ' log');
@@ -53,4 +54,25 @@ let Dump = class Dump {
 Dump = __decorate([
     log('@')
 ], Dump);
-new Dump();
+// new Dump()
+// 复杂应用，事件附加 PV
+function PV(str) {
+    return function (target, methodName, descriptor) {
+        const originalFn = descriptor.value;
+        // 拦截重写方法
+        descriptor.value = function () {
+            console.log(`${str} PV data send`);
+            originalFn.apply(this, arguments);
+        };
+    };
+}
+class ClickEvent {
+    linkToPage() {
+        console.log('linkToPage');
+    }
+}
+__decorate([
+    PV('home')
+], ClickEvent.prototype, "linkToPage", null);
+const event = new ClickEvent();
+event.linkToPage();
