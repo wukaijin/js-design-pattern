@@ -1,0 +1,80 @@
+"use strict";
+/**
+ * 发布/订阅模式 （Publish/Subscribe）
+ * 这个模式其实是观察者模式的变种，在其基础上加入调度中心，达到订阅主题和观察者的完全解耦
+ * Vue 中的 EventBus 和 Nodejs 中的 EventEmitter
+ * 这两个是典型应用，其作用就是调度
+ */
+class EventEmitter {
+    constructor() {
+        this.callbacks = {};
+    }
+    on(type, cb) {
+        !this.callbacks[type] && (this.callbacks[type] = []);
+        this.callbacks[type].push(cb);
+    }
+    off(type, cb) {
+        if (!cb) {
+            this.callbacks[type] = [];
+        }
+        else {
+            this.callbacks[type] = this.callbacks[type].filter(c => c !== cb);
+        }
+    }
+    // TODO 尝试约束不定参，这个 any 有点碍眼
+    emit(type, ...arr) {
+        ;
+        (this.callbacks[type] || []).forEach(cb => cb(...arr));
+    }
+}
+// 示例
+class Server extends EventEmitter {
+    constructor(requestHandler) {
+        super();
+        this.port = 3000;
+        this.requestHandler = requestHandler;
+    }
+    listen(port) {
+        this.port = port;
+        this.on('request', this.requestHandler);
+        return this;
+    }
+}
+const server = new Server((data) => {
+    console.log(`catch a request with ${data}`);
+}).listen(3000);
+server.emit('request', 'jsonData');
+// 示例2，不使用继承
+class Store {
+    constructor() {
+        this.data = '';
+    }
+    update(data) {
+        this.data = data;
+        this.updateHandler && this.updateHandler(data);
+    }
+    onUpdate(updateHandler) {
+        this.updateHandler = updateHandler;
+    }
+}
+class Component {
+    constructor(data = '') {
+        this.render(data);
+    }
+    render(data) {
+        console.log('render data: ', data);
+    }
+}
+const storeEvent = new EventEmitter();
+const store = new Store();
+store.onUpdate((data) => {
+    storeEvent.emit('change', data);
+});
+const headerComponent = new Component();
+const footerComponent = new Component();
+storeEvent.on('change', (data) => {
+    headerComponent.render(data);
+    footerComponent.render(data);
+});
+store.update('Hello');
+store.update('World');
