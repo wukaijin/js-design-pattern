@@ -1,3 +1,10 @@
+/*
+ * @Author: Carlos
+ * @Date: 2022-12-14 23:57:53
+ * @LastEditTime: 2022-12-22 23:36:04
+ * @FilePath: /js-design-pattern/ts/creational/builder.ts
+ * @Description: 
+ */
 /**
  * 创建者模式 (Builder Pattern)
  * 将复杂对象的创建和表示分离，使得同样的构建过程可以创建不同的表示
@@ -9,10 +16,10 @@ class NavBar {
   init() {
     console.log('NavBar init')
   }
-  getiData() {
+  getData() {
     return new Promise<string>(resolve => {
       setTimeout(() => {
-        console.log('NavBar getiData')
+        console.log('NavBar getData')
         resolve('data')
       }, 200)
     })
@@ -27,10 +34,10 @@ class ContentList {
   init() {
     console.log('ContentList init')
   }
-  getiData() {
+  getData() {
     return new Promise<string>(resolve => {
       setTimeout(() => {
-        console.log('ContentList getiData')
+        console.log('ContentList getData')
         resolve('data')
       }, 200)
     })
@@ -43,7 +50,7 @@ type PageComponent = InstanceType<typeof NavBar> | InstanceType<typeof ContentLi
 
 async function buildPage(comp: PageComponent) {
   comp.init()
-  await comp.getiData()
+  await comp.getData()
   comp.render()
 }
 

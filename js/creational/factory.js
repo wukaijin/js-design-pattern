@@ -1,4 +1,11 @@
 "use strict";
+/*
+ * @Author: Carlos
+ * @Date: 2022-12-14 16:13:10
+ * @LastEditTime: 2022-12-22 23:39:35
+ * @FilePath: /js-design-pattern/ts/creational/factory.ts
+ * @Description:
+ */
 /**
  * Factory Method (工厂模式)
  * 由一个工厂对象决定创建某种产品对象的类实例，主要创建`同一种`对象
@@ -24,11 +31,11 @@ class User {
                 return new User(role, ['register', 'login', 'setting', 'home']);
             case 'user':
                 return new User(role, ['register', 'login', 'home']);
-            case 'vistor':
+            case 'visitor':
                 return new User(role, ['register', 'login']);
             default:
                 return new User(role);
         }
     }
 }
-console.log(User.factory('superAdmin'), User.factory('admin'), User.factory('user'), User.factory('vistor'));
+console.log(User.factory('superAdmin'), User.factory('admin'), User.factory('user'), User.factory('visitor'));

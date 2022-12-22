@@ -1,7 +1,7 @@
 /*
  * @Author: Carlos
  * @Date: 2022-12-22 17:30:50
- * @LastEditTime: 2022-12-22 21:57:42
+ * @LastEditTime: 2022-12-22 23:15:41
  * @FilePath: /js-design-pattern/ts/behavioral/chainOfResponsibility.ts
  * @Description:
  * 职责链模式 (Chain of responsibility)
@@ -9,7 +9,7 @@
  * 让多个对象都有可能接收请求，将这些对象连接成一条链，并且沿着这条链传递请求，直到有对象处理它为止。
  */
 type Params = Record<string, string>
-type Rule = (p: Params) => string | undefined
+type Rule = (p: Params) => string | void
 
 class Task {
   rule: Rule

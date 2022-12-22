@@ -2,14 +2,14 @@
 /*
  * @Author: Carlos
  * @Date: 2022-12-21 15:07:09
- * @LastEditTime: 2022-12-21 17:22:36
+ * @LastEditTime: 2022-12-22 23:31:33
  * @FilePath: /js-design-pattern/ts/behavioral/iterator.ts
  * @Description:
  * 迭代器模式 (Iterator)
  * 指提供一种方法，顺序访问某哥聚合对象中的各个元素，而不需要暴露该对象的内部表示。
  * 迭代器模式可以把迭代的过程从业务逻辑中分离出来，即使用迭代器模式之后，
  * 既不关心对象内部构造，也可以按顺序访问其中的每个元素。
- * ES6 内置了 Generater 函数，可以生成 Iterator，用 for on/in 访问
+ * ES6 内置了 Generator 函数，可以生成 Iterator，用 for on/in 访问
  */
 class Fiber {
     constructor(state = '') {

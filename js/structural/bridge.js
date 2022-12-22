@@ -1,4 +1,11 @@
 "use strict";
+/*
+ * @Author: Carlos
+ * @Date: 2022-12-16 17:14:36
+ * @LastEditTime: 2022-12-22 23:42:05
+ * @FilePath: /js-design-pattern/ts/structural/bridge.ts
+ * @Description:
+ */
 /**
  * 桥接模式 （Bridge）
  * 这个模式在前端应用还是比较生硬的，有点难理解。
@@ -20,10 +27,10 @@ class DialogComponent {
         this.animation.hide(this.name);
     }
 }
-class Madal extends DialogComponent {
+class Modal extends DialogComponent {
     constructor() {
         super(...arguments);
-        this.name = 'Madal';
+        this.name = 'Modal';
     }
 }
 class Message extends DialogComponent {
@@ -53,7 +60,7 @@ const Animations = {
         hide: logWithName('rotate.hide')
     }
 };
-const madal = new Madal(Animations.slide);
+const modal = new Modal(Animations.slide);
 const message = new Message(Animations.bounce);
-madal.show();
+modal.show();
 message.hide();

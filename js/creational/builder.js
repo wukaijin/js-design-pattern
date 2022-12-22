@@ -8,6 +8,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+/*
+ * @Author: Carlos
+ * @Date: 2022-12-14 23:57:53
+ * @LastEditTime: 2022-12-22 23:36:04
+ * @FilePath: /js-design-pattern/ts/creational/builder.ts
+ * @Description:
+ */
 /**
  * 创建者模式 (Builder Pattern)
  * 将复杂对象的创建和表示分离，使得同样的构建过程可以创建不同的表示
@@ -19,10 +26,10 @@ class NavBar {
     init() {
         console.log('NavBar init');
     }
-    getiData() {
+    getData() {
         return new Promise(resolve => {
             setTimeout(() => {
-                console.log('NavBar getiData');
+                console.log('NavBar getData');
                 resolve('data');
             }, 200);
         });
@@ -36,10 +43,10 @@ class ContentList {
     init() {
         console.log('ContentList init');
     }
-    getiData() {
+    getData() {
         return new Promise(resolve => {
             setTimeout(() => {
-                console.log('ContentList getiData');
+                console.log('ContentList getData');
                 resolve('data');
             }, 200);
         });
@@ -51,7 +58,7 @@ class ContentList {
 function buildPage(comp) {
     return __awaiter(this, void 0, void 0, function* () {
         comp.init();
-        yield comp.getiData();
+        yield comp.getData();
         comp.render();
     });
 }

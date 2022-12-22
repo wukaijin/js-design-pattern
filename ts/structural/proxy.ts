@@ -1,3 +1,10 @@
+/*
+ * @Author: Carlos
+ * @Date: 2022-12-15 16:56:16
+ * @LastEditTime: 2022-12-22 23:42:42
+ * @FilePath: /js-design-pattern/ts/structural/proxy.ts
+ * @Description: 
+ */
 /**
  * 代理模式 (Proxy)
  * 使用简单对象表示复杂对象，或为另一个对象提供占位符以控制对它的访问
@@ -42,14 +49,14 @@ const vueData = {
 
 const proxy = new Proxy(vueData, {
   get: (target, p) => {
-    console.log(`collect dependences about ${p.toString()}`)
+    console.log(`collect dependencies about ${p.toString()}`)
     // @ts-ignore
     return target[p]
   },
   set: (target, p, newValue) => {
     // @ts-ignore
     target[p] = newValue
-    console.log(`notify dependences to rerender about ${p.toString()}`)
+    console.log(`notify dependencies to rerender about ${p.toString()}`)
     return true
   }
 })

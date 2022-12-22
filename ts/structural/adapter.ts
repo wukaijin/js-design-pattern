@@ -1,3 +1,10 @@
+/*
+ * @Author: Carlos
+ * @Date: 2022-12-15 14:56:57
+ * @LastEditTime: 2022-12-22 23:40:42
+ * @FilePath: /js-design-pattern/ts/structural/adapter.ts
+ * @Description: 
+ */
 /**
  * 适配器模式 (Adapter)
  * 抹平接口差异
@@ -5,12 +12,12 @@
  */
 
 class TencentSDK {
-  reciver: string
-  constructor(reciver: string) {
-    this.reciver = reciver
+  receiver: string
+  constructor(receiver: string) {
+    this.receiver = receiver
   }
   pay(money: number) {
-    console.log(`pay ${this.reciver} ￥${money}`)
+    console.log(`pay ${this.receiver} ￥${money}`)
   }
 }
 

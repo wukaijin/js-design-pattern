@@ -1,3 +1,10 @@
+/*
+ * @Author: Carlos
+ * @Date: 2022-12-16 17:14:36
+ * @LastEditTime: 2022-12-22 23:42:05
+ * @FilePath: /js-design-pattern/ts/structural/bridge.ts
+ * @Description: 
+ */
 /**
  * 桥接模式 （Bridge）
  * 这个模式在前端应用还是比较生硬的，有点难理解。
@@ -11,15 +18,15 @@
 
 
 // 比较难举例唉
-interface IanimationLib {
+interface IAnimationLib {
   hide: (str: string) => void
   show: (str: string) => void
 }
 
 class DialogComponent {
-  animation: IanimationLib
+  animation: IAnimationLib
   name: string = ''
-  constructor(animation: IanimationLib) {
+  constructor(animation: IAnimationLib) {
     this.animation = animation
   }
   show() {
@@ -29,8 +36,8 @@ class DialogComponent {
     this.animation.hide(this.name)
   }
 }
-class Madal extends DialogComponent {
-  name: string = 'Madal'
+class Modal extends DialogComponent {
+  name: string = 'Modal'
 }
 class Message extends DialogComponent {
   name: string = 'Message'
@@ -41,7 +48,7 @@ class Toast extends DialogComponent {
 
 const logWithName = (str: string) => (str2: string) => console.log(str2, str)
 
-const Animations: Record<string, IanimationLib> = {
+const Animations: Record<string, IAnimationLib> = {
   bounce: {
     show: logWithName('bounce.show'),
     hide: logWithName('bounce.hide')
@@ -55,8 +62,8 @@ const Animations: Record<string, IanimationLib> = {
     hide: logWithName('rotate.hide')
   }
 }
-const madal = new Madal(Animations.slide)
+const modal = new Modal(Animations.slide)
 const message = new Message(Animations.bounce)
 
-madal.show()
+modal.show()
 message.hide()

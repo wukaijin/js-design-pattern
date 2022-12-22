@@ -6,18 +6,18 @@ class Observer {
 }
 class Subject {
     constructor() {
-        this.denpendences = [];
+        this.dependencies = [];
     }
-    add(denpendence) {
-        if (this.denpendences.indexOf(denpendence) === -1) {
-            this.denpendences.push(denpendence);
+    add(dependency) {
+        if (this.dependencies.indexOf(dependency) === -1) {
+            this.dependencies.push(dependency);
         }
     }
-    remove(denpendence) {
-        this.denpendences = this.denpendences.filter(d => d !== denpendence);
+    remove(dependency) {
+        this.dependencies = this.dependencies.filter(d => d !== dependency);
     }
     notify(params) {
-        this.denpendences.forEach(d => d.update(params));
+        this.dependencies.forEach(d => d.update(params));
     }
 }
 // 举例: 户主寄售房子，中介接收通知

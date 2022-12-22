@@ -1,3 +1,10 @@
+/*
+ * @Author: Carlos
+ * @Date: 2022-12-16 10:00:40
+ * @LastEditTime: 2022-12-22 23:35:30
+ * @FilePath: /js-design-pattern/ts/behavioral/observer.ts
+ * @Description: 
+ */
 /**
  * 观察者模式 (Observer)
  *
@@ -14,17 +21,17 @@ class Observer {
 }
 
 class Subject {
-  denpendences: Observer[] = []
-  add(denpendence: Observer) {
-    if (this.denpendences.indexOf(denpendence) === -1) {
-      this.denpendences.push(denpendence)
+  dependencies: Observer[] = []
+  add(dependency: Observer) {
+    if (this.dependencies.indexOf(dependency) === -1) {
+      this.dependencies.push(dependency)
     }
   }
-  remove(denpendence: Observer) {
-    this.denpendences = this.denpendences.filter(d => d !== denpendence)
+  remove(dependency: Observer) {
+    this.dependencies = this.dependencies.filter(d => d !== dependency)
   }
   notify(params: changeParams) {
-    this.denpendences.forEach(d => d.update(params))
+    this.dependencies.forEach(d => d.update(params))
   }
 }
 
