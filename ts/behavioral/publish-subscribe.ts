@@ -5,7 +5,7 @@
  * 这两个是典型应用，其作用就是调度
  */
 
-class EventEmitter {
+class EventEmitter<T> {
   callbacks: Record<string, Function[]> = {}
   on(type: string, cb: Function) {
     !this.callbacks[type] && (this.callbacks[type] = [])
@@ -18,14 +18,13 @@ class EventEmitter {
       this.callbacks[type] = this.callbacks[type].filter(c => c !== cb)
     }
   }
-  // TODO 尝试约束不定参，这个 any 有点碍眼
-  emit(type: string, ...arr: any[]) {
+  emit(type: string, ...arr: T[]) {
     ;(this.callbacks[type] || []).forEach(cb => cb(...arr))
   }
 }
 
 // 示例
-class Server extends EventEmitter {
+class Server extends EventEmitter<string> {
   port: number = 3000
   requestHandler: Function
   constructor(requestHandler: Function) {
@@ -39,15 +38,13 @@ class Server extends EventEmitter {
   }
 }
 
-const server = new Server((data: any) => {
+const server = new Server((data: string) => {
   console.log(`catch a request with ${data}`)
 }).listen(3000)
 
 server.emit('request', 'jsonData')
 
-
 // 示例2，不使用继承
-
 
 class Store {
   data: string = ''
@@ -61,7 +58,7 @@ class Store {
   }
 }
 class Component {
-  constructor (data: string = '') {
+  constructor(data: string = '') {
     this.render(data)
   }
   render(data: string) {
@@ -75,7 +72,6 @@ store.onUpdate((data: string) => {
   storeEvent.emit('change', data)
 })
 
-
 const headerComponent = new Component()
 const footerComponent = new Component()
 
@@ -86,6 +82,3 @@ storeEvent.on('change', (data: string) => {
 
 store.update('Hello')
 store.update('World')
-
-
-

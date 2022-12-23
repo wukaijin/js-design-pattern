@@ -1,7 +1,7 @@
 /*
  * @Author: Carlos
  * @Date: 2022-12-19 16:09:09
- * @LastEditTime: 2022-12-19 17:30:03
+ * @LastEditTime: 2022-12-23 00:26:02
  * @FilePath: /js-design-pattern/ts/structural/composite.ts
  * @Description:
  * 组合模式（Composite）
@@ -12,10 +12,10 @@
 import { promises as fs } from 'fs'
 import path from 'path'
 
-type docStr = {
+type CocStr = {
   name: string
   isDirectory: boolean
-  children: docStr[]
+  children: CocStr[]
 }
 /**
  * @description: 文件夹
@@ -49,7 +49,7 @@ class Doc {
       }
     })
   }
-  toString(): docStr {
+  toString(): CocStr {
     // easy to console
     return {
       name: this.path.split('/').pop() || '',

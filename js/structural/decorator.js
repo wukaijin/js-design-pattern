@@ -1,4 +1,11 @@
 "use strict";
+/*
+ * @Author: Carlos
+ * @Date: 2022-12-15 01:18:19
+ * @LastEditTime: 2022-12-23 16:21:15
+ * @FilePath: /js-design-pattern/ts/structural/decorator.ts
+ * @Description:
+ */
 /**
  * 装饰器模式 (Decorator)
  * 对已有功能进行扩展，不改动原有的代码，对其他业务造成的影响。

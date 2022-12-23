@@ -21,7 +21,6 @@ class EventEmitter {
             this.callbacks[type] = this.callbacks[type].filter(c => c !== cb);
         }
     }
-    // TODO 尝试约束不定参，这个 any 有点碍眼
     emit(type, ...arr) {
         ;
         (this.callbacks[type] || []).forEach(cb => cb(...arr));

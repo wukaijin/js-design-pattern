@@ -2,7 +2,7 @@
 /*
  * @Author: Carlos
  * @Date: 2022-12-19 16:09:09
- * @LastEditTime: 2022-12-19 17:30:03
+ * @LastEditTime: 2022-12-23 00:26:02
  * @FilePath: /js-design-pattern/ts/structural/composite.ts
  * @Description:
  * 组合模式（Composite）

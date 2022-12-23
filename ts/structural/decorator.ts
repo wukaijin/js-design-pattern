@@ -1,3 +1,10 @@
+/*
+ * @Author: Carlos
+ * @Date: 2022-12-15 01:18:19
+ * @LastEditTime: 2022-12-23 16:21:15
+ * @FilePath: /js-design-pattern/ts/structural/decorator.ts
+ * @Description: 
+ */
 /**
  * 装饰器模式 (Decorator)
  * 对已有功能进行扩展，不改动原有的代码，对其他业务造成的影响。
@@ -41,7 +48,7 @@ console.log(Array.from(new Array(30)).join('='))
 // TypeScript 中的装饰器， 展示部分功能。
 // 简单使用， 直接装饰 class， log会提前执行 (声明D ump 的时候)
 function log(str: string) {
-  return function (target: any) {
+  return function (target: Function) {
     console.log(str + ' log')
   }
 }
@@ -54,7 +61,7 @@ class Dump {
 // 复杂应用，事件附加 PV
 function PV(str: string) {
   return function (
-    target: any,
+    target: ClickEvent,
     methodName: string,
     descriptor: PropertyDescriptor
   ) {

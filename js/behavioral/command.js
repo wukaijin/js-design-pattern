@@ -2,7 +2,7 @@
 /*
  * @Author: Carlos
  * @Date: 2022-12-19 16:26:03
- * @LastEditTime: 2022-12-21 14:04:19
+ * @LastEditTime: 2022-12-23 00:24:33
  * @FilePath: /js-design-pattern/ts/behavioral/command.ts
  * @Description:
  * 命令模式 (Command)
@@ -14,7 +14,7 @@
  *  2. 接受者(receiver): 提供对应接口处理请求，不知道谁发起请求
  *  3. 命令对象(command): 接收命令，调用接收者处理发布者的请求 （middle）
  */
-// type commandType = 'on' | 'off' | 'up' | 'down'
+// type CommandType = 'on' | 'off' | 'up' | 'down'
 class AirCondition {
     on() {
         console.log('AirCondition turn on.');

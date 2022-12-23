@@ -1,7 +1,7 @@
 /*
  * @Author: Carlos
  * @Date: 2022-12-19 16:26:03
- * @LastEditTime: 2022-12-21 14:04:19
+ * @LastEditTime: 2022-12-23 00:24:33
  * @FilePath: /js-design-pattern/ts/behavioral/command.ts
  * @Description: 
  * 命令模式 (Command)
@@ -15,8 +15,8 @@
  */
 
 // 随便以空调举例 (空调 - 命令对象 - 遥控)
-type commandType = 'on'
-// type commandType = 'on' | 'off' | 'up' | 'down'
+type CommandType = 'on'
+// type CommandType = 'on' | 'off' | 'up' | 'down'
 
 class AirCondition {
   on () {
@@ -29,7 +29,7 @@ class ServiceCommand {
   constructor (airC: AirCondition) {
     this.airCondition = airC
   }
-  execute(type: commandType) {
+  execute(type: CommandType) {
       if (typeof this.airCondition[type] === 'function') {
         this.airCondition[type]()
       }

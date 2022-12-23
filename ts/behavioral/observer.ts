@@ -1,7 +1,7 @@
 /*
  * @Author: Carlos
  * @Date: 2022-12-16 10:00:40
- * @LastEditTime: 2022-12-22 23:35:30
+ * @LastEditTime: 2022-12-23 00:34:55
  * @FilePath: /js-design-pattern/ts/behavioral/observer.ts
  * @Description: 
  */
@@ -12,10 +12,10 @@
  * 观察目标（主体）和 观察者是一对多的关系
  * 观察目标对象更改状态，其所有依赖项都会自动更新。
  */
-type changeParams = Record<string, any>
+type ChangeParams = Record<string, string>
 
 class Observer {
-  update(params: changeParams) {
+  update(params: ChangeParams) {
     console.log(`update: ${JSON.stringify(params)}`)
   }
 }
@@ -30,7 +30,7 @@ class Subject {
   remove(dependency: Observer) {
     this.dependencies = this.dependencies.filter(d => d !== dependency)
   }
-  notify(params: changeParams) {
+  notify(params: ChangeParams) {
     this.dependencies.forEach(d => d.update(params))
   }
 }
