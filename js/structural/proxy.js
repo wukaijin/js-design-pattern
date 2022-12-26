@@ -2,11 +2,9 @@
 /*
  * @Author: Carlos
  * @Date: 2022-12-15 16:56:16
- * @LastEditTime: 2022-12-22 23:42:42
+ * @LastEditTime: 2022-12-23 21:18:33
  * @FilePath: /js-design-pattern/ts/structural/proxy.ts
  * @Description:
- */
-/**
  * 代理模式 (Proxy)
  * 使用简单对象表示复杂对象，或为另一个对象提供占位符以控制对它的访问
  * ES6 Proxy 类是典型应用

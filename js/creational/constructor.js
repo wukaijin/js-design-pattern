@@ -1,5 +1,10 @@
 "use strict";
-/**
+/*
+ * @Author: Carlos
+ * @Date: 2022-12-14 11:44:17
+ * @LastEditTime: 2022-12-24 00:16:51
+ * @FilePath: /js-design-pattern/ts/creational/constructor.ts
+ * @Description:
  * 构造器模式 (Constructor)
  * 构造器模式并未在常规的23模式命名中，但 JS 中常用这种说法，列出参考
  */

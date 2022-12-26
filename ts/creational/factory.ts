@@ -1,9 +1,9 @@
 /*
  * @Author: Carlos
  * @Date: 2022-12-14 16:13:10
- * @LastEditTime: 2022-12-22 23:39:35
+ * @LastEditTime: 2022-12-24 00:14:40
  * @FilePath: /js-design-pattern/ts/creational/factory.ts
- * @Description: 
+ * @Description:
  */
 /**
  * Factory Method (工厂模式)
@@ -14,42 +14,53 @@
 
 type Role = 'superAdmin' | 'admin' | 'user' | 'visitor'
 type Auth = 'register' | 'login' | 'setting' | 'home' | 'system'
-interface User {
-  role: Role
+
+// type Factory = <T>(c: { new (): T }) => T
+
+interface IUser {
+  readonly role: Role
+  readonly name: string
   auths: Auth[]
 }
-class User implements User {
-  role: Role
-  auths: Auth[]
-  constructor(role: Role, auths?: Auth[]) {
+const superAdminAuths: Auth[] = [
+  'register',
+  'login',
+  'setting',
+  'home',
+  'system'
+]
+const adminAuths: Auth[] = ['register', 'login', 'setting', 'home']
+const userAuths: Auth[] = ['register', 'login', 'home']
+const visitorAuths: Auth[] = ['register', 'login']
+// const emptyAuths = []
+
+class User implements IUser {
+  readonly role: Role
+  readonly name: string
+  readonly auths: Auth[]
+  constructor(role: Role, name: string, auths?: Auth[]) {
     this.role = role
+    this.name = name
     this.auths = auths || []
   }
-  static factory(role: Role): User {
+  static factory(role: Role, name: string): User {
     switch (role) {
       case 'superAdmin':
-        return new User(role, [
-          'register',
-          'login',
-          'setting',
-          'home',
-          'system'
-        ])
+        return new User(role, name, superAdminAuths)
       case 'admin':
-        return new User(role, ['register', 'login', 'setting', 'home'])
+        return new User(role, name, adminAuths)
       case 'user':
-        return new User(role, ['register', 'login', 'home'])
+        return new User(role, name, userAuths)
       case 'visitor':
-        return new User(role, ['register', 'login'])
+        return new User(role, name, visitorAuths)
       default:
-        return new User(role)
+        return new User(role, name)
     }
   }
 }
+const superAdmin = User.factory('superAdmin', 'Mary')
+const admin = User.factory('admin', 'Bob')
+const user = User.factory('user', 'David')
+const visitor = User.factory('visitor', 'Vik')
 
-console.log(
-  User.factory('superAdmin'),
-  User.factory('admin'),
-  User.factory('user'),
-  User.factory('visitor')
-)
+console.log(superAdmin, admin, user, visitor)
